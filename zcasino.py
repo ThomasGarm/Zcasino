@@ -1,10 +1,10 @@
 #CASINO:
 
 
-from random import randrange
+from random import randrange #computer select a random number in a choosen range
 
-money=1000
-continuer=True
+money=1000 #the amount you have when you start
+continuer=True #boolean
 
 
 
@@ -28,6 +28,7 @@ while continuer: #boolean
     
     bet = 0 #now the loop for playing 'money'
     while bet <= 0 or bet > money:
+        print ("you earn ",money,"€")
         bet = input("How much you bet? : ")
         
         try:
@@ -59,13 +60,11 @@ while continuer: #boolean
         money += 1 #too generous
 
     #game's ending
-    if argent <= 0:
-        print("Vous êtes ruiné ! C'est la fin de la partie.")
-        continuer_partie = False
+    if money <= 0:
+        print("BANKROUT")
+        continuer = False
     else:
-        # On affiche l'argent du joueur
-        print("Vous avez à présent", argent, "$")
-        quitter = input("Souhaitez-vous quitter le casino (o/n) ? ")
-        if quitter == "o" or quitter == "O":
-            print("Vous quittez le casino avec vos gains.")
-            continuer_partie = False
+        leave = input("Do you want to leave ? (y) ? ") #only 'y' count here
+        if leave == "y":
+            print("You leave with: ",money,"€")
+            continuer = False

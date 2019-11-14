@@ -1,7 +1,7 @@
 #CASINO:
 
-import math
-import random
+
+from random import randrange
 
 money=1000
 continuer=True
@@ -41,24 +41,24 @@ while continuer: #boolean
         if bet > money: #for the balance
             print("Too much, you only have:", money, "€")
 
-    # Le nombre misé et la mise ont été sélectionnés par
-    # l'utilisateur, on fait tourner la roulette
-    numero_gagnant = randrange(50)
-    print("La roulette tourne... ... et s'arrête sur le numéro", numero_gagnant)
+    
+    winnernumber = randrange(99) #from import random with the highest number of the roulette
+    print("AND SPIN !!!! .............", winnernumber, "!")
 
-    # On établit le gain du joueur
-    if numero_gagnant == nombre_mise:
-        print("Félicitations ! Vous obtenez", mise * 3, "$ !")
-        argent += mise * 3
-    elif numero_gagnant % 2 == nombre_mise % 2: # ils sont de la même couleur
-        mise = ceil(mise * 0.5)
-        print("Vous avez misé sur la bonne couleur. Vous obtenez", mise, "$")
-        argent += mise
-    else:
-        print("Désolé l'ami, c'est pas pour cette fois. Vous perdez votre mise.")
-        argent -= mise
+    # No pain no gain, three conditions
+    if winnernumber == roulettenumber:
+        print("CONGRATULATIONS !!! You win: ", bet * 10000000000000, "€ !") #because i'm generous
+        money += bet * 10000000000000 #you add the gain at the money value
+    elif winnernumber % 2 == roulettenumber % 2: # same color
+        bet = bet*500 #too generous
+        print("Same color!You win: ", bet,"€")
+        money += bet #incremantation of the bet in money's value
+    else:# the last condition: loosing
+        print("You lost :(, here a euro for cheer !")
+        money -= bet #soustraction of the bet
+        money += 1 #too generous
 
-    # On interrompt la partie si le joueur est ruiné
+    #game's ending
     if argent <= 0:
         print("Vous êtes ruiné ! C'est la fin de la partie.")
         continuer_partie = False

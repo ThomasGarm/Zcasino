@@ -16,8 +16,8 @@ while continuer: #boolean
         
         try: 
             roulettenumber = int(roulettenumber)
-        except ValueError: #for no input
-            print("no entry")
+        except ValueError: #for no input or no int
+            print("Wrong entry")
             roulettenumber = -1 #don't forget to return at the begin of the loop
             continue #python still run
         if roulettenumber < 0: #now the conditions which enter in 'while roulettenumber < 0 or roulettenumber > 99'
@@ -32,14 +32,14 @@ while continuer: #boolean
         
         try:
             bet = int(bet)
-        except ValueError: #again for no input
-            print("Vous n'avez pas saisi de nombre")
-            mise = -1
-            continue
-        if mise <= 0:
-            print("La mise saisie est négative ou nulle.")
-        if mise > argent:
-            print("Vous ne pouvez miser autant, vous n'avez que", argent, "$")
+        except ValueError: #again for no input or no int
+            print("Wrong entry")
+            bet = -1 #again don't forget to return at the loop's beginning: while bet <= 0 or bet > money
+            continue #python still run
+        if bet <= 0:
+            print("less than 0 money? :): ")
+        if bet > money: #for the balance
+            print("Too much, you only have:", money, "€")
 
     # Le nombre misé et la mise ont été sélectionnés par
     # l'utilisateur, on fait tourner la roulette
